@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Sniglet');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Sniglet';
+    border-radius: 0.5em;
+}
+a {
+    color: rgb(80, 120, 250);
+    text-decoration: none;
+}
+a:hover {
+    color: rgb(20, 30, 250);
+    text-decoration: underline;
+}
+form, table, div {
+    width: 60%;
+    border: 1px solid gray;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+table, tr, th, td {
+    border: 1px solid gray;
+    border-collapse: collapse;
+    border-radius: 0;
+}
+
+th, td {
+    padding: 0.5em;
+}
+tr:nth-child(2n) {
+    background: #DDD;
+}
+
+form input {
+    display: block;
+    width: 80%;
+    margin: auto;
+    border: 3px groove #ddd;
+    font-size: 1em;
+    padding: 0.5em;
+    margin-bottom: 0.2em;
+}
+form input[type="submit"] {
+    width: 50%;
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+h1.title {
+    text-align: center;
+}
+
+.users h1 {
+    margin-bottom: 0.5em;
+}
+.users li {
+    list-style: none;
+    list-style: none;
+    display: inline-block;
+}
+.users li a {
+    border: 1px solid #ddd;
+    font-size: 1.2em;
+    border-radius: 0.5em;
+    padding: 0.2em 0.8em;
+}
+@keyframes bg-green {
+    0% { background: #fff; }
+    100% { background: rgb(100, 220, 150); }
+}
+.users li a:hover {
+    animation-name: bg-green;
+    animation-duration: 1s;
+}
+
+.message {
+    background: rgb(100, 220, 150);
+    text-align: center;
+}
+.message h1 {
+    color: rgb(20, 100, 30);
+}
