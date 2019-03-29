@@ -2,25 +2,11 @@
 
 include 'init.php';
 
-?>
+if (!is_logged()) {
+    include 'forbidden.html';
+    exit();
+}
 
-<?php if (!is_logged()): ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Não autorizado</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <h1>Você não está autorizado a vizualizar esta página.</h1>
-        <a href="login.php">Clique aqui para autenticar-se</a>
-    </body>
-    </html>
-<?php exit() ?>
-<?php endif ?>
-
-<?php
 $usuario = currentUser();
 
 $livrosFile = [];
