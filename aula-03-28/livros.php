@@ -8,6 +8,7 @@ if (!is_logged()) {
 }
 
 $usuario = currentUser();
+$email = currentUserEmail();
 
 $livrosFile = [];
 if (file_exists('livros.csv')) {
@@ -17,7 +18,7 @@ $livros = [];
 foreach($livrosFile as $i => $livro) {
     $livroData = explode(',', $livro);
     $livros[$i] = [
-        'usuario' => $livroData[0],
+        'usuarioEmail' => $livroData[0],
         'nome' => $livroData[1],
         'autor' => $livroData[2]
     ];
@@ -41,7 +42,7 @@ foreach($livrosFile as $i => $livro) {
             <th>ações</th>
         </tr>
         <?php foreach ($livros as $id => $livro): ?>
-            <?php if ($livro['usuario'] == $usuario): ?>
+            <?php if ($livro['usuarioEmail'] == $email): ?>
                 <tr>
                     <td><?= $livro['nome'] ?></td>
                     <td><?= $livro['autor'] ?></td>
@@ -55,7 +56,6 @@ foreach($livrosFile as $i => $livro) {
     <form action="addLivro.php" method="POST">
         <input type="text" name="nome" placeholder="nome">
         <input type="text" name="autor" placeholder="autor">
-        <input type="hidden" name="usuario" value="<?= $usuario ?>">
         <input type="submit" value="Adicionar">
     </form>
     <div class="back">
