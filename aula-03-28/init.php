@@ -28,4 +28,23 @@ function juntar($arr) {
     return $s;
 }
 
+function is_logged() {
+    return isset($_SESSION['user']);
+}
+
+function login($name) {
+    $_SESSION['user'] = $name;
+}
+
+function logout() {
+    unset($_SESSION['user']);
+}
+
+function currentUser() {
+    if (!is_logged()) {
+        return false;
+    }
+    return $_SESSION['user'];
+}
+
 ?>
