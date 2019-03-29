@@ -7,14 +7,23 @@ $inputs = [
     'senha' => 'password',
     'senha2' => 'password'
 ];
-
+// echo "<pre>";
 $usuariosFile = file('users.csv');
-$usuarios = [];
+// print_r($usuariosFile);
+// $usuarios = [];
+// print_r($usuarios);
+// echo "\n";
 foreach ($usuariosFile as $usuario) {
+    // print_r($usuario);
     $usuarioData = explode(',', $usuario);
+    // print_r($usuarioData);
     $nome = $usuarioData[0];
     $usuarios[] = $nome; // adiciona o elemento $nome ao final do array $usuarios
+    // print_r($usuarios);
+    // echo "\n";
 }
+
+// echo "</pre>";
 
 ?>
 
