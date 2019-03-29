@@ -4,8 +4,16 @@ include 'init.php';
 
 $id = get('id');
 
+if (!is_logged()) {
+    include 'forbidden.html';
+    exit();
+}
+
 $livros = file('livros.csv');
-unset($livros[$id]);
+$livroData = explode(',', $livros[$id]);
+if ($livroData[0] == currentUserEmail()) {
+    unset($livros[$id]);
+}
 
 $data = '';
 foreach($livros as $livro) {
