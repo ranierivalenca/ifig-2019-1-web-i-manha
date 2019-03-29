@@ -9,7 +9,7 @@ $usuarios = file('users.csv');
 foreach($usuarios as $usuario) {
     $usuarioData = explode(',', $usuario);
     if ($usuarioData[2] == $email && trim($usuarioData[3]) == md5($senha)) {
-        login($usuarioData[0]);
+        login($usuarioData[0], $usuarioData[2]);
         break;
     }
 }

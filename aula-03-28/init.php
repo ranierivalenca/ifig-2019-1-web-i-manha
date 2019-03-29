@@ -32,8 +32,9 @@ function is_logged() {
     return isset($_SESSION['user']);
 }
 
-function login($name) {
+function login($name, $email) {
     $_SESSION['user'] = $name;
+    $_SESSION['email'] = $email;
 }
 
 function logout() {
@@ -45,6 +46,13 @@ function currentUser() {
         return false;
     }
     return $_SESSION['user'];
+}
+
+function currentUserEmail() {
+    if (!is_logged()) {
+        return false;
+    }
+    return $_SESSION['email'];
 }
 
 ?>
