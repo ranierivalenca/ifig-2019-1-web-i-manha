@@ -18,12 +18,7 @@ function media($arr) {
         $inversos[] = $inverso; // adiciona a variável $inverso no final do array $inversos
     }
 
-    /* @CALLFUNCTION-2 */
-    $soma = 0;
-    foreach($inversos as $inverso) {
-        $soma += $inverso;
-    }
-    /* ENDCALL */
+    $soma = array_sum($inversos);
 
     if ($soma == 0) {
         return 0;
