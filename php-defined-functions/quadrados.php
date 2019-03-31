@@ -9,11 +9,14 @@ if ($numbers != []) {
     $numbers = explode(',', $numbers);
 }
 
+/* @CALLFUNCTION */
 $squares = [];
 foreach ($numbers as $number) {
     $squares[$number] = quadrado($number);
 }
+/* ENDCALL */
 
+/* @CALLFUNCTION */
 $numbers_str = '';
 for($i = 0; $i < sizeof($numbers); $i++) {
     $numbers_str .= $numbers[$i];
@@ -21,6 +24,7 @@ for($i = 0; $i < sizeof($numbers); $i++) {
         $numbers_str .= ',';
     }
 }
+/* ENDCALL */
 
 ?>
 
