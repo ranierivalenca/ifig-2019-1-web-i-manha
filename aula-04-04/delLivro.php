@@ -22,17 +22,6 @@ foreach($livros as $livro) {
 $handle = fopen('livros.csv', 'w');
 fwrite($handle, $data);
 
+redirect('livros.php');
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="message">
-        <h1>Livro removido</h1>
-        <a href="livros.php">Voltar</a>
-    </div>
-</body>
-</html>
