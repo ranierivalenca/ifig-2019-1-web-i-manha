@@ -14,21 +14,10 @@ foreach($usuarios as $usuario) {
     }
 }
 
+if (is_logged()) {
+    header('location: livros.php');
+} else {
+    header('location: login.php?error=e-mail ou senha incorretos');
+}
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <?php if (is_logged()): ?>
-        <h1>Login ok</h1>
-        <a href="livros.php">Clique para ver os livros</a>
-    <?php else: ?>
-        <h1>E-mail ou senha incorretos</h1>
-        <a href="login.php">Tente novamente</a>
-    <?php endif ?>
-</body>
-</html>

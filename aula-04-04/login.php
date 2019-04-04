@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php if (isset($_GET['error'])): ?>
+        <div class="error"><?= $_GET['error'] ?></div>
+    <?php endif ?>
     <form action="auth.php" method="POST">
         <input type="text" name="email" placeholder="email">
         <input type="password" name="senha" placeholder="senha">
