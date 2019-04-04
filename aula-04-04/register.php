@@ -11,8 +11,7 @@ $senha = post('senha');
 $senha2 = post('senha2');
 
 if ($senha != $senha2) {
-    header('location: index.php?error=Senhas não conferem');
-    exit();
+    redirect('index.php?error=Senhas não conferem');
 }
 
     $data = juntar([$nome, $sobrenome, $email, md5($senha)]) . "\n";
@@ -21,6 +20,6 @@ if ($senha != $senha2) {
     $handle = fopen('users.csv', 'a');
     fwrite($handle, $data);
 
-    header('location: index.php?message=Usuário cadastrado');
+    redirect('index.php?message=Usuário cadastrado');
 ?>
 

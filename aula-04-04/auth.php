@@ -15,9 +15,9 @@ foreach($usuarios as $usuario) {
 }
 
 if (is_logged()) {
-    header('location: livros.php');
+    redirect('livros.php');
 } else {
-    header('location: login.php?error=e-mail ou senha incorretos');
+    redirect('login.php?error=e-mail ou senha incorretos');
 }
 
 ?>

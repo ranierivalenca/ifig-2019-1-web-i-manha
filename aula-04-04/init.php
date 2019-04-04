@@ -55,4 +55,9 @@ function currentUserEmail() {
     return $_SESSION['email'];
 }
 
+function redirect($url) {
+    header('location: ' . $url);
+    exit();
+}
+
 ?>
