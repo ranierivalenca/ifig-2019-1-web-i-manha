@@ -88,3 +88,11 @@ h1 span {
 .message h1 {
     color: rgb(20, 100, 30);
 }
+
+.error {
+    background: rgb(220, 100, 100);
+    text-align: center;
+}
+.error h1 {
+    color: rgb(100, 20, 30);
+}

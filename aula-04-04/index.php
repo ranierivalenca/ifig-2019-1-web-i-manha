@@ -35,6 +35,12 @@ foreach ($usuariosFile as $usuario) {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <?php if (isset($_GET['message'])): ?>
+        <div class="message"><?= $_GET['message'] ?></div>
+    <?php endif ?>
+    <?php if (isset($_GET['error'])): ?>
+        <div class="error"><?= $_GET['error'] ?></div>
+    <?php endif ?>
     <form action="register.php" method="POST">
         <?php foreach ($inputs as $name => $type): ?>
             <input type="<?= $type ?>" name="<?= $name ?>" placeholder="<?= $name ?>">
