@@ -33,6 +33,7 @@ if (file_exists('filmes.csv')) {
         <div class="filme">
             <h3><?= $nome ?> <span>(<?= $nota ?>)</span></h3>
             <p><?= $descricao ?></p>
+            <a href="editFilme.php?id=<?= $id ?>">Editar</a>
             <a href="delFilme.php?id=<?= $id ?>">Remover</a>
         </div>
     <?php endforeach ?>
