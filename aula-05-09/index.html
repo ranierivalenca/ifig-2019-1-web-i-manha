@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #conteudo {
+            display: none;
+        }
+        #img {
+            width: 100px;
+            transition: 1s;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo">Hello world</h1>
+    <div id="conteudo">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate repellat nulla dolor libero! Ratione provident nesciunt excepturi numquam non, ad totam sit deserunt odio, expedita asperiores, reprehenderit fugit unde.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolore delectus neque deserunt, quo, perferendis quibusdam expedita facere incidunt dolorum vitae illum voluptatibus iste sed recusandae ipsum nesciunt culpa. Nihil.</p>
+        <ul>
+            <li><a href="#">hey man</a> </li>
+            <li></li>
+        </ul>
+    </div>
+    <img src="cat-vader.jpg" id="img" alt="">
+    <a href="#" id="confirm">Clique aqui</a>
+    <script>
+        let titulo = document.getElementById('titulo');
+        let conteudo = document.getElementById('conteudo');
+        titulo.onmouseover = function() {
+            // titulo.style.background = 'red';
+            conteudo.style.display = 'block';
+        }
+        titulo.onmouseout = function() {
+            // titulo.style.background = 'transparent';
+            conteudo.style.display = 'none';
+        }
+        let gato = document.getElementById('img');
+        gato.onmouseover = function() {
+            let w = gato.style.width || '100px'; // '100px'
+            w = parseInt(w); // 100
+            w += 30;
+            gato.style.width = w + 'px';
+            // gato.style.width = '200px';
+        }
+        gato.onmouseout = function() {
+            // gato.style.width = '100px';
+        }
+
+        let btn = document.getElementById('confirm');
+        btn.onclick = function() {
+            let nome = prompt('Qual teu nome, parça?');
+            titulo.innerHTML = 'Bem vindo, ' + nome;
+        }
+    </script>
+</body>
+</html>
