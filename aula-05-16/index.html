@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <style>
+        h1 {
+            background: red;
+        }
         #conteudo {
             display: none;
         }
@@ -23,19 +26,53 @@
             <li></li>
         </ul>
     </div>
+    <ul>
+        <li class="item">Joleen</li>
+        <li class="item">Desirae</li>
+        <li class="item">Rhoda</li>
+        <li class="item">Kandice</li>
+    </ul>
     <img src="cat-vader.jpg" id="img" alt="">
     <a href="#" id="confirm">Clique aqui</a>
     <script>
+        let items = document.getElementsByClassName('item');
+        // for(i = 0; i < items.length; i++) {
+        // for (i in items) { // i representa os índices dos elementos
+        //     if (!items[i].addEventListener) { // verifica se existe a função addEventListener em items[i]
+        //         continue;
+        //     }
+        //     items[i].addEventListener('mouseover', function() {
+        //         // this refere-se ao elemento que está sofrendo o evento
+        //         this.style.color = 'hsl(' + Math.random() * 360 + ', 100%, 30%)';
+        //     });
+        // }
+        for (item of items) { // i representa os índices dos elementos
+            item.addEventListener('mouseover', function() {
+                // this refere-se ao elemento que está sofrendo o evento
+                this.style.color = 'hsl(' + Math.random() * 360 + ', 100%, 30%)';
+            });
+        }
+
+        window.addEventListener('resize', function() {
+            alert("mudou de tamanho");
+        });
+
         let titulo = document.getElementById('titulo');
         let conteudo = document.getElementById('conteudo');
-        titulo.onmouseover = function() {
+        titulo.addEventListener('mouseover', function() { //callback
             // titulo.style.background = 'red';
             conteudo.style.display = 'block';
-        }
-        titulo.onmouseout = function() {
+        });
+        titulo.addEventListener('mouseover', function() {
+            titulo.style.color = 'white';
+        });
+        titulo.addEventListener('mouseout', function() {
             // titulo.style.background = 'transparent';
             conteudo.style.display = 'none';
-        }
+        });
+        titulo.addEventListener('mouseout', function() {
+            titulo.style.color = 'black';
+        })
         let gato = document.getElementById('img');
         gato.onmouseover = function() {
             let w = gato.style.width || '100px'; // '100px'
