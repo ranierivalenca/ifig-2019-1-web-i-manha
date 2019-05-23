@@ -41,7 +41,7 @@
         <li class="item">Dario</li>
     </ul>
     <img src="cat-vader.jpg" id="img" alt="">
-    <a href="#" id="confirm">Clique aqui</a>
+    <a href="qualquer coisa" id="confirm">Clique aqui</a>
     <!-- <script src="load.php"></script> -->
     <script>
         // let items = document.getElementsByClassName('item');
@@ -70,43 +70,64 @@
             $(this).css('background', 'hsl(' + Math.random() * 360 + ', 100%, 30%)');
         });
 
-        window.addEventListener('resize', function() {
-            alert("mudou de tamanho");
-        });
+        // $(window).on('resize', function() {
+        //     alert('mudou de tamanho');
+        // });
+        $(window).on('resize', () => alert('mudou de tamanho'));
 
-        let titulo = document.getElementById('titulo');
-        let conteudo = document.getElementById('conteudo');
-        titulo.addEventListener('mouseover', function() { //callback
-            // titulo.style.background = 'red';
-            conteudo.style.display = 'block';
-        });
-        titulo.addEventListener('mouseover', function() {
-            titulo.style.color = 'white';
-        });
-        titulo.addEventListener('mouseout', function() {
-            // titulo.style.background = 'transparent';
-            conteudo.style.display = 'none';
-        });
-        titulo.addEventListener('mouseout', function() {
-            titulo.style.color = 'black';
-        })
-        let gato = document.getElementById('img');
-        gato.onmouseover = function() {
-            let w = gato.style.width || '100px'; // '100px'
+
+        let titulo = $('#titulo');
+        let conteudo = $('#conteudo');
+        // titulo.on('mouseover', function() {
+        //     // conteudo.style.display = 'block';
+        //     conteudo.css('display', 'block');
+        //     // titulo.style.color = 'white';
+        //     titulo.css('color', 'white');
+        // }).on('mouseout', function() {
+        //     conteudo.css('display', 'none');
+        //     titulo.css('color', 'black');
+        // });
+        titulo
+            .on('mouseover', () => {
+                conteudo.css('display', 'block');
+                titulo.css('color', 'white');
+            })
+            .on('mouseout', () => {
+                // $(this) // isto não funcionaria aqui, porque é uma arrow function
+                conteudo.css('display', 'none');
+                titulo.css('color', 'black');
+            });
+
+
+        // let gato = document.getElementById('img');
+        // gato.onmouseover = function() {
+        //     let w = gato.style.width || '100px'; // '100px'
+        //     w = parseInt(w); // 100
+        //     w += 30;
+        //     gato.style.width = w + 'px';
+        //     // gato.style.width = '200px';
+        // }
+        // gato.onmouseout = function() {
+        //     // gato.style.width = '100px';
+        // }
+        $('#img').on('mouseover', function() {
+            let w = $(this).css('width') || '100px'; // por causa do 'this', esta função não poderia ser uma arrow function
             w = parseInt(w); // 100
             w += 30;
-            gato.style.width = w + 'px';
-            // gato.style.width = '200px';
-        }
-        gato.onmouseout = function() {
-            // gato.style.width = '100px';
-        }
+            $(this).css('width', w + 'px');
+        });
 
-        let btn = document.getElementById('confirm');
-        btn.onclick = function() {
+        // let btn = document.getElementById('confirm');
+        // btn.onclick = function() {
+        //     let nome = prompt('Qual teu nome, parça?');
+        //     titulo.innerHTML = 'Bem vindo, ' + nome;
+        // }
+        $('#confirm').on('click', (event) => {
+            // console.log(event);
+            event.preventDefault();
             let nome = prompt('Qual teu nome, parça?');
-            titulo.innerHTML = 'Bem vindo, ' + nome;
-        }
+            titulo.html('Bem vindo, ' + nome);
+        });
     </script>
 </body>
 </html>
