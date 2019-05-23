@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #pai {
+            padding: 2em;
+            background: red;
+        }
+        #filho {
+            background: yellow;
+        }
+        #neto {
+            background: white;
+            /*padding: 1em;*/
+        }
+    </style>
+</head>
+<body>
+    <div id="pai">
+        <p id="filho">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit consequuntur, animi accusamus facere suscipit sunt voluptas ratione, <span id="neto">similique quo necessitatibus</span> nulla vel sed repudiandae blanditiis deserunt. Esse inventore, neque error.</p>
+    </div>
+    <script>
+        $ = (el) => document.getElementById(el);
+        $('pai').addEventListener('click', (evt) => {
+            console.log(new Date().getSeconds() + 'click no pai' + evt.target);
+        }, true);
+        $('filho').addEventListener('click', (evt) => {
+            console.log(new Date().getSeconds() + 'click no filho' + evt.target);
+        });
+        $('neto').addEventListener('click', (evt) => {
+            evt.stopPropagation();
+            console.log(new Date().getSeconds() + 'click no neto' + evt.target);
+        });
+    </script>
+</body>
+</html>
