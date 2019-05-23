@@ -24,12 +24,7 @@
 <body>
     <h1 id="titulo">Hello world</h1>
     <div id="conteudo">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cupiditate repellat nulla dolor libero! Ratione provident nesciunt excepturi numquam non, ad totam sit deserunt odio, expedita asperiores, reprehenderit fugit unde.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta dolore delectus neque deserunt, quo, perferendis quibusdam expedita facere incidunt dolorum vitae illum voluptatibus iste sed recusandae ipsum nesciunt culpa. Nihil.</p>
-        <ul>
-            <li><a href="#">hey man</a> </li>
-            <li></li>
-        </ul>
+        <h2>Carregando...</h2>
     </div>
     <ul>
         <li class="item">Joleen</li>
@@ -89,6 +84,15 @@
         // });
         titulo
             .on('mouseover', () => {
+                $.ajax({
+                    url: 'conteudo.php',
+                    success: function(data){ //data tem o corpo do response
+                        conteudo.html(data);
+                    },
+                    error: () => {
+                        alert('deu ruim');
+                    }
+                });
                 conteudo.css('display', 'block');
                 titulo.css('color', 'white');
             })
@@ -97,6 +101,13 @@
                 conteudo.css('display', 'none');
                 titulo.css('color', 'black');
             });
+
+            var varJson = {
+                nome: 'nome',
+                content: 'blablabla',
+                date: '00/00/0000'
+            }
+
 
 
         // let gato = document.getElementById('img');
