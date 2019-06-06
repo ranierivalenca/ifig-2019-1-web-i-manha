@@ -32,25 +32,13 @@ $items = getItems();
             <?php endif ?>
         </tr>
         <?php foreach ($items as $itemId => $item): ?>
-            <tr class="item<?= $itemId ?>">
-                <td><?= $item['titulo'] ?></td>
-                <td><?= $item['desc'] ?></td>
-                <?php if (is_logged()): ?>
-                    <td>
-                        <?php
-                            $author = user_info($item['email']);
-                        ?>
-                        <?= $author['nome'] ?>
-                    </td>
-                    <td>
-                        <a href="itemInfo.php?id=<?= $itemId ?>">Mais informações</a>
-                        <?php if ($item['email'] == user_email()): ?>
-                            <br>
-                            <a href="delItem.php?id=<?= $itemId ?>" class="remover">Remover</a>
-                        <?php endif ?>
-                    </td>
-                <?php endif ?>
-            </tr>
+            <?php
+                $title = $item['titulo'];
+                $description = $item['desc'];
+                $user_email = $item['email'];
+
+                include 'item.php';
+            ?>
         <?php endforeach ?>
     </table>
     <script>
