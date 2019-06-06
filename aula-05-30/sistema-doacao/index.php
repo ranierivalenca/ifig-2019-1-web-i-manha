@@ -12,6 +12,12 @@ $items = getItems();
     <meta charset="UTF-8">
     <title><?= TITLE ?></title>
     <link rel="stylesheet" href="assets/styles.css">
+    <script src="jquery-3.4.1.js"></script>
+    <script>
+        $.ready(function() {
+
+        });
+    </script>
 </head>
 <body>
     <h1>Sistema de doação</h1>
@@ -26,7 +32,7 @@ $items = getItems();
             <?php endif ?>
         </tr>
         <?php foreach ($items as $itemId => $item): ?>
-            <tr>
+            <tr class="item<?= $itemId ?>">
                 <td><?= $item['titulo'] ?></td>
                 <td><?= $item['desc'] ?></td>
                 <?php if (is_logged()): ?>
@@ -40,13 +46,26 @@ $items = getItems();
                         <a href="itemInfo.php?id=<?= $itemId ?>">Mais informações</a>
                         <?php if ($item['email'] == user_email()): ?>
                             <br>
-                            <a href="delItem.php?id=<?= $itemId ?>">Remover</a>
+                            <a href="delItem.php?id=<?= $itemId ?>" class="remover">Remover</a>
                         <?php endif ?>
                     </td>
                 <?php endif ?>
             </tr>
         <?php endforeach ?>
     </table>
+    <script>
+        $('.remover').on('click', function(event) {
+            event.preventDefault();
+            var el = $(this);
+            $.ajax({
+                url: el.attr('href'),
+                success: function() {
+                    // $('.item<?= $itemId ?>').remove();
+                    el.parent().parent().remove();
+                }
+            });
+        });
+    </script>
     <?php if (is_logged()): ?>
         <form action="addItem.php" method="POST">
             <fieldset>
