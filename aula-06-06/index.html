@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="jquery-3.4.1.js"></script>
+</head>
+<body>
+    <button class="add">Adicionar</button>
+    <div id="els"></div>
+    <script>
+        $('.add').on('click', (evt) => {
+            evt.preventDefault();
+            $.ajax({
+                url: 'new-el.html',
+                success: function(response) {
+                    $('#els').append(response);
+                    $('.del').on('click', function(evt) {
+                        evt.preventDefault();
+                        $(this).parent().remove();
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
