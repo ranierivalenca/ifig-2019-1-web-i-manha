@@ -1,0 +1,73 @@
+* {
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    border-radius: .5em;
+}
+
+body {
+    margin: 5px 15% auto;
+    padding: .5em 2em;
+    border: 1px solid #ddd;
+}
+table, tr, td, th {
+    border: 1px solid #bbb;
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: .5em;
+}
+
+table {
+    width: 100%;
+}
+
+fieldset {
+    margin-top: .5em;
+    border: 2px groove #aaa;
+    width: 100%;
+    padding: .5em;
+}
+legend {
+    font-weight: bold;
+    padding: 0 1em;
+    background: rgb(20, 220, 50);
+    border-radius: 1em;
+}
+
+input, textarea {
+    display: block;
+    width: 100%;
+    padding: .5em;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    margin-bottom: .5em;
+}
+textarea {
+    resize: none;
+}
+input[type="submit"] {
+    width: 60%;
+    margin: auto;
+}
+
+hr {
+    width: 100%;
+    border: 1px solid red;
+    margin: 1em auto;
+}
+
+h1, h3 {
+    text-align: center;
+}
+
+.message {
+    display: block;
+    width: 100%;
+    padding: .5em;
+    background: rgb(220, 220, 30);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: .5em;
+}
