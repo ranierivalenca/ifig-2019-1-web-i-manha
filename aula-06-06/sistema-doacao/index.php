@@ -22,7 +22,7 @@ $items = getItems();
 <body>
     <h1>Sistema de doação</h1>
     <h3>Itens a serem doados</h3>
-    <table>
+    <table id="items">
         <tr>
             <th>Item</th>
             <th>Descrição</th>
@@ -54,25 +54,30 @@ $items = getItems();
         <?php endforeach ?>
     </table>
     <script>
-        $('.remover').on('click', function(event) {
-            event.preventDefault();
-            var el = $(this);
-            $.ajax({
-                url: el.attr('href'),
-                success: function() {
-                    // $('.item<?= $itemId ?>').remove();
-                    el.parent().parent().remove();
-                }
-            });
-        });
+        $('#items').on(
+            'click',
+            '.remover', // apenas clicks em filhos que possuem a classe 'remover'
+            function(event) {
+                event.preventDefault();
+                var el = $(this);
+                $.ajax({
+                    url: el.attr('href'),
+                    success: function() {
+                        // $('.item<?= $itemId ?>').remove();
+                        el.parent().parent().remove();
+                    }
+                });
+            }
+        );
     </script>
     <?php if (is_logged()): ?>
-        <form action="addItem.php" method="POST">
+        <form action="addItem.php" method="POST" id="add-item">
             <fieldset>
                 <legend>Novo item</legend>
                 <input type="text" name="title" placeholder="Título">
                 <textarea name="description" rows="6" placeholder="Descrição"></textarea>
                 <input type="submit">
+                <!-- <input type="reset"> -->
             </fieldset>
         </form>
         <h3>
@@ -80,14 +85,22 @@ $items = getItems();
         </h3>
         <script>
             // Exemplo de request assíncrono com POST
-            // $.ajax({
-            //     url: "",
-            //     type: 'POST',
-            //     data: '',
-            //     success: function(response) {
-
-            //     }
-            // });
+            $('#add-item').on('submit', function(evento) {
+                // 'this' se refere ao elemento que está sofrendo o evento
+                evento.preventDefault(); // cancelo o envio padrão
+                var dados = $(this).serialize();
+                $.ajax({
+                    url: $(this).attr('action'),
+                    type: 'POST',
+                    data: dados,
+                    success: function(response) {
+                        // inserir uma linha na tabela
+                        // console.log(response);
+                        $('#items').append(response);
+                        $('#add-item').trigger('reset'); // dispara o evento 'reset'
+                    }
+                });
+            });
         </script>
     <?php else: ?>
         <h3><a href="reg_login.php">Registro / login</a></h3>
