@@ -78,6 +78,17 @@ $items = getItems();
         <h3>
             <a href="logout.php">Logout</a>
         </h3>
+        <script>
+            // Exemplo de request assíncrono com POST
+            // $.ajax({
+            //     url: "",
+            //     type: 'POST',
+            //     data: '',
+            //     success: function(response) {
+
+            //     }
+            // });
+        </script>
     <?php else: ?>
         <h3><a href="reg_login.php">Registro / login</a></h3>
     <?php endif ?>
